@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - dev
- # schedule:
-  #- cron: "15 22 * * *"
+  schedule:
+  - cron: "15 22 * * *"
 jobs:
   bot:
     runs-on: ubuntu-latest
