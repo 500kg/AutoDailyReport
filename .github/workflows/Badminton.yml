@@ -37,5 +37,7 @@ jobs:
             USERNAME: ${{ secrets.USERNAME }}
             PASSWORD: ${{ secrets.PASSWORD }}
             EMAIL: ${{ secrets.EMAIL }}
+            BADMINTON: ${{ secrets.BADMINTON }}
+
           run: |            
             python ./ReserveBadminton.py -d 02 --hour 16:00
