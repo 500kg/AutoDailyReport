@@ -1,5 +1,7 @@
 import os
 import time
+from os import environ
+
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -192,8 +194,12 @@ def to_time():
         return t
 
 def main():
+    if os.name != 'nt':
+        badminton = environ['badminton']
+        if badminton != '1':
+            return 0
     parser = argparse.ArgumentParser()
-    
+
     parser.add_argument("-d", "--day", default = "02")#默认周一周三
     parser.add_argument("--hour", default = "16:00")#默认1600-1700
     args = parser.parse_args()
@@ -219,7 +225,7 @@ def main():
     for ch in day:
         target_day = int(ch)
         x = (target_day - current_day + 7)%7
-        if(x <= 2):
+        if(x <= 3):
             date = (datetime.datetime.now() + datetime.timedelta(days = x)).strftime("%m-%d")
             print('尝试预约' , date, hour)
             res, flag = reserve(browser, date, hour)
