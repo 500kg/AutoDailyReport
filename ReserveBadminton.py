@@ -195,7 +195,7 @@ def to_time():
 
 def main():
     if os.name != 'nt':
-        badminton = environ['badminton']
+        badminton = environ['BADMINTON']
         if badminton != '1':
             return 0
     parser = argparse.ArgumentParser()
